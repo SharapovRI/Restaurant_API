@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Restaurant_API.Business_Logic_Layer;
+using Restaurant_API.Data_Access_Layer;
 using Restaurant_API.Models;
 using System;
 using System.Collections.Generic;
@@ -36,6 +38,9 @@ namespace Restaurant_API
 
             services.AddSingleton<IRestaurant_API_DataBaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<Restaurant_API_DataBaseSettings>>().Value);
+
+            services.AddSingleton<UsersService>();
+            services.AddSingleton<UserLogic>();
 
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

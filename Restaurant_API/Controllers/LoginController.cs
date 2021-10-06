@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Restaurant_API.Business_Logic_Layer;
 using Restaurant_API.Models;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace Restaurant_API.Controllers
     public class LoginController : ControllerBase
     {
         private IConfiguration _config;
+        private UserLogic _userLogic;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, UserLogic userLogic)
         {
             _config = config;
+            _userLogic = userLogic;
         }
 
         [AllowAnonymous]
@@ -59,10 +62,7 @@ namespace Restaurant_API.Controllers
 
             //Validate the User Credentials    
             //Demo Purpose, I have Passed HardCoded User Information    
-            if (login.Login == "Jignesh")
-            {
-                user = new User { Login = "Jignesh Trivedi", Password = "123" };
-            }
+            user = _userLogic.GetUser(login.Login, login.Password);
             return user;
         }
     }
