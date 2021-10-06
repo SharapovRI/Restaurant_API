@@ -32,13 +32,6 @@ namespace Restaurant_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // requires using Microsoft.Extensions.Options
-            services.Configure<Restaurant_API_DataBaseSettings>(
-                Configuration.GetSection(nameof(Restaurant_API_DataBaseSettings)));
-
-            services.AddSingleton<IRestaurant_API_DataBaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<Restaurant_API_DataBaseSettings>>().Value);
-
             services.AddSingleton<UsersService>();
             services.AddSingleton<UserLogic>();
 

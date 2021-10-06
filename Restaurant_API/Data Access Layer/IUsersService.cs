@@ -11,9 +11,9 @@ namespace Restaurant_API.Data_Access_Layer
         public User Create(User user);
         public User Get(string login, string password);
         public List<User> Get();
-        public User Get(string id);
-        public void Update(string id, User userEd);
+        public User Get(int id);
+        public void Update(int id, User userEd);
         public void Remove(User userEd);
-        public void Remove(string id);
+        public void Remove(int id);
     }
 }

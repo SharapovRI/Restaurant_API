@@ -9,7 +9,7 @@ namespace Restaurant_API.Business_Logic_Layer
 {
     public class UserLogic
     {
-        private IUsersService _usersService;
+        private UsersService _usersService;
         
         public UserLogic(UsersService usersService)
         {

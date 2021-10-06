@@ -58,12 +58,7 @@ namespace Restaurant_API.Controllers
 
         private User AuthenticateUser(User login)
         {
-            User user = null;
-
-            //Validate the User Credentials    
-            //Demo Purpose, I have Passed HardCoded User Information    
-            user = _userLogic.GetUser(login.Login, login.Password);
-            return user;
+            return _userLogic.GetUser(login.login, login.password);            
         }
     }
 }
