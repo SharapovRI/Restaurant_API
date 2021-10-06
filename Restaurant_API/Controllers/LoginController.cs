@@ -65,11 +65,5 @@ namespace Restaurant_API.Controllers
             }
             return user;
         }
-
-        [HttpGet]
-        public int Fart()
-        {
-            return 2;
-        }
     }
 }
