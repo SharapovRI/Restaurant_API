@@ -12,6 +12,7 @@ namespace Restaurant_API
     public class ApplicationContext : DbContext
     {
         public DbSet<User> users { get; set; }
+        public DbSet<Table> tables { get; set; }
         
         public ApplicationContext()
         {
@@ -20,7 +21,7 @@ namespace Restaurant_API
         [AllowAnonymous]
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=RestaurantDB;Username=postgres;Password=PostgreSQL");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Restaurant_API_DB;Username=postgres;Password=PostgreSQL");
         }
     }
 }
