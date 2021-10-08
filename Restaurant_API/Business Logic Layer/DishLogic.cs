@@ -9,51 +9,51 @@ namespace Restaurant_API.Business_Logic_Layer
 {
     public class DishLogic
     {
-        private DishesRepository _usersRepository;
+        private DishesRepository<Dish> _dishesRepository;
 
-        public DishLogic(DishesRepository usersRepository)
+        public DishLogic(DishesRepository<Dish> dishesRepository)
         {
-            _usersRepository = usersRepository;
-        }
-
-        public List<Dish> GetDishes()
-        {
-            return _usersRepository.Get();
-        }
-
-        public Dish GetDish(int id)
-        {
-            return _usersRepository.Get(id);
-        }
-
-        public Dish GetDish(string name)
-        {
-            return _usersRepository.Get(name);
-        }
-
-        public Dish Update(Dish dish)
-        {
-            return _usersRepository.Update(dish);
+            _dishesRepository = dishesRepository;
         }
         public Dish Add(string name)
         {
             Dish dish = new Dish { name = name };
-            return _usersRepository.Create(dish);
+            return (Dish)_dishesRepository.Create(dish);
         }
+
+        public List<Dish> GetDishes()
+        {
+            return _dishesRepository.Get();
+        }
+
+        public Dish GetDish(int id)
+        {
+            return (Dish)_dishesRepository.Get(id);
+        }
+
+        public Dish GetDish(string name)
+        {
+            return _dishesRepository.Get(name);
+        }
+
+        public Dish Update(Dish dish)
+        {
+            return (Dish)_dishesRepository.Update(dish);
+        }        
 
         public Dish Remove(string name)
         {
-            return _usersRepository.Remove(name);
+            return _dishesRepository.Remove(name);
         }
 
         public Dish Remove(Dish dish)
         {
-            return _usersRepository.Remove(dish);
+            return (Dish)_dishesRepository.Remove(dish);
         }
 
         public Dish Remove(int id)
         {
-            return _usersRepository.Remove(id);
+            return (Dish)_dishesRepository.Remove(id);
         }
     }
 }

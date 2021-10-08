@@ -9,9 +9,9 @@ namespace Restaurant_API.Business_Logic_Layer
 {
     public class UserLogic
     {
-        private UsersRepository _usersRepository;
+        private UsersRepository<User> _usersRepository;
         
-        public UserLogic(UsersRepository usersService)
+        public UserLogic(UsersRepository<User> usersService)
         {
             _usersRepository = usersService;
         }

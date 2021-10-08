@@ -7,20 +7,14 @@ using System.Threading.Tasks;
 
 namespace Restaurant_API.Data_Access_Layer
 {
-    public class DishesRepository
+    public class DishesRepository<TEntity> : Repository<TEntity> where TEntity : Dish
     {
         private readonly ApplicationContext _db;
 
-        public DishesRepository(ApplicationContext db)
+        public DishesRepository(ApplicationContext db) 
+            :base(db)
         {
             _db = db;
-        }
-
-        public Dish Create(Dish dish)
-        {
-            _db.dishes.Add(dish);
-            _db.SaveChanges();
-            return dish;
         }
 
         public async Task<Dish> CreateAsync(Dish dish)
@@ -30,12 +24,8 @@ namespace Restaurant_API.Data_Access_Layer
             return dish;
         }
 
-        public List<Dish> Get() =>
+        public new List<Dish> Get() =>
             _db.dishes.ToList();
-
-
-        public Dish Get(int id) =>
-            _db.dishes.FirstOrDefault(dish => dish.id == id);
 
         public async Task<Dish> GetAsync(int id) =>
             await _db.dishes.FirstOrDefaultAsync(dish => dish.id == id);
@@ -45,28 +35,7 @@ namespace Restaurant_API.Data_Access_Layer
 
         public async Task<Dish> GetAsync(string name) =>
             await _db.dishes.FirstOrDefaultAsync(dish => dish.name == name);
-
-        public Dish Update(Dish dish)
-        {
-            _db.dishes.Update(dish);
-            _db.SaveChanges();
-            return dish;
-        }
-
-        public Dish Remove(Dish dish)
-        {
-            _db.dishes.Remove(dish);
-            _db.SaveChanges();
-            return dish;
-        }
-
-        public Dish Remove(int id)
-        {
-            Dish dish = Get(id);
-            _db.dishes.Remove(dish);
-            _db.SaveChanges();
-            return dish;
-        }
+                
         public Dish Remove(string name)
         {
             Dish dish = Get(name);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant_API.Models
 {
-    public class User
+    public class User:IEntity
     {
         public int id { get; set; }
         

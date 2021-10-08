@@ -20,7 +20,7 @@ namespace Restaurant_API.Controllers
         {
             _dishLogic = dishLogic;
         }
-        
+
         [HttpGet]
         public IEnumerable<Dish> GetDishes()
         {
@@ -34,15 +34,14 @@ namespace Restaurant_API.Controllers
         }
 
         [HttpGet("Details/{name}")]
-        public Dish Details(string name)        
+        public Dish Details(string name)
         {
             return _dishLogic.GetDish(name);
         }
 
         // POST: DishController/Create
         [HttpPost("Create/{name}")]
-        public void Create(string name)
-        
+        public void Create(string name)        
         {
             _dishLogic.Add(name);
         }
