@@ -9,15 +9,15 @@ namespace Restaurant_API.Business_Logic_Layer
 {
     public class UserLogic
     {
-        private UsersService _usersService;
+        private UsersRepository _usersRepository;
         
-        public UserLogic(UsersService usersService)
+        public UserLogic(UsersRepository usersService)
         {
-            _usersService = usersService;
+            _usersRepository = usersService;
         }
         public User GetUser(string login, string password)
         {
-            return _usersService.Get(login, password);
+            return _usersRepository.Get(login, password);
         }
     }
 }

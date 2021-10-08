@@ -32,8 +32,11 @@ namespace Restaurant_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<UsersService>();
+            services.AddSingleton<UsersRepository>();
             services.AddSingleton<UserLogic>();
+            services.AddSingleton<DishesRepository>();
+            services.AddSingleton<DishLogic>();
+            services.AddSingleton<ApplicationContext>();
 
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

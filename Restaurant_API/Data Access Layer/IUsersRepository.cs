@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Restaurant_API.Data_Access_Layer
 {
-    interface IUsersService
+    interface IUsersRepository
     {
         public User Create(User user);
         public User Get(string login, string password);
         public List<User> Get();
         public User Get(int id);
-        public void Update(int id, User userEd);
-        public void Remove(User userEd);
-        public void Remove(int id);
+        public User Update(User user);
+        public User Remove(User user);
+        public User Remove(int id);
     }
 }

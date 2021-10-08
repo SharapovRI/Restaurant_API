@@ -13,7 +13,9 @@ namespace Restaurant_API
     {
         public DbSet<User> users { get; set; }
         public DbSet<Table> tables { get; set; }
-        
+        public DbSet<Dish> dishes { get; set; }
+        public DbSet<Portion> portions { get; set; }
+
         public ApplicationContext()
         {
             //Database.EnsureCreated();
