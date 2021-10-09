@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Restaurant_API.Models
 {
-    public class Table: IEntity
+    public class ServingItem : IEntity
     {
         [Key]
         public int id { get; set; }
 
-        public string table_name { get; set; }
+        [Required]
+        public string name { get; set; }
 
-        public int user_id { get; set; }
-
-        [ForeignKey("user_id")]
-        public User User { get; set; }
-
-        public List<Portion> Portions { get; set; }
         public List<TableSetting> TableSettings { get; set; }
     }
 }

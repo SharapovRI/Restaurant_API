@@ -12,7 +12,7 @@ namespace Restaurant_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DishController : ControllerBase
+    public class DishController : Controller
     {
         private DishLogic _dishLogic;
 

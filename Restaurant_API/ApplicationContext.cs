@@ -15,6 +15,8 @@ namespace Restaurant_API
         public DbSet<Table> tables { get; set; }
         public DbSet<Dish> dishes { get; set; }
         public DbSet<Portion> portions { get; set; }
+        public DbSet<ServingItem> serving_items { get; set; }
+        public DbSet<TableSetting> table_settings { get; set; }
 
         public ApplicationContext()
         {
