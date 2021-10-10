@@ -12,6 +12,7 @@ namespace Restaurant_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class DishController : Controller
     {
         private DishLogic _dishLogic;

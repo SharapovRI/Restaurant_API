@@ -18,7 +18,7 @@ namespace Restaurant_API.Business_Logic_Layer
         public Dish Add(string name)
         {
             Dish dish = new Dish { name = name };
-            return (Dish)_dishesRepository.Create(dish);
+            return _dishesRepository.Create(dish);
         }
 
         public List<Dish> GetDishes()
@@ -28,7 +28,7 @@ namespace Restaurant_API.Business_Logic_Layer
 
         public Dish GetDish(int id)
         {
-            return (Dish)_dishesRepository.Get(id);
+            return _dishesRepository.Get(id);
         }
 
         public Dish GetDish(string name)
@@ -38,7 +38,7 @@ namespace Restaurant_API.Business_Logic_Layer
 
         public Dish Update(Dish dish)
         {
-            return (Dish)_dishesRepository.Update(dish);
+            return _dishesRepository.Update(dish);
         }        
 
         public Dish Remove(string name)
@@ -48,12 +48,12 @@ namespace Restaurant_API.Business_Logic_Layer
 
         public Dish Remove(Dish dish)
         {
-            return (Dish)_dishesRepository.Remove(dish);
+            return _dishesRepository.Remove(dish);
         }
 
         public Dish Remove(int id)
         {
-            return (Dish)_dishesRepository.Remove(id);
+            return _dishesRepository.Remove(id);
         }
     }
 }

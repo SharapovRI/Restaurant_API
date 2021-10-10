@@ -15,7 +15,7 @@ namespace Restaurant_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class LoginController : ControllerBase
+    public class LoginController : Controller
     {
         private IConfiguration _config;
         private UserLogic _userLogic;
@@ -58,7 +58,7 @@ namespace Restaurant_API.Controllers
 
         private User AuthenticateUser(User login)
         {
-            return _userLogic.GetUser(login.login, login.password);            
+            return _userLogic.GetUser(login.login, login.password);
         }
     }
 }

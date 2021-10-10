@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant_API.Business_Logic_Layer;
 using Restaurant_API.Models;
@@ -11,6 +12,7 @@ namespace Restaurant_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class TableSettingController : Controller
     {
         private TableSettingLogic _tableSettingLogic;

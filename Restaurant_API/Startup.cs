@@ -34,10 +34,22 @@ namespace Restaurant_API
         {
             services.AddSingleton<UsersRepository<User>>();
             services.AddSingleton<UserLogic>();
+
             services.AddSingleton<DishesRepository<Dish>>();
             services.AddSingleton<DishLogic>();
+
             services.AddSingleton<PortionRepository<Portion>>();
             services.AddSingleton<PortionLogic>();
+
+            services.AddSingleton<ServingItemsRepository<ServingItem>>();
+            services.AddSingleton<ServingItemLogic>();
+
+            services.AddSingleton<TableRepository<Table>>();
+            services.AddSingleton<TableLogic>();
+
+            services.AddSingleton<TableSettingRepository<TableSetting>>();
+            services.AddSingleton<TableSettingLogic>();
+
             services.AddSingleton<ApplicationContext>();
 
 
