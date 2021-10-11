@@ -25,7 +25,7 @@ namespace Restaurant_API.Data_Access_Layer
         }
         public new List<TableSetting> Get(int tableID)
         {
-            TableSetting tableSetting = _db.table_settings.Include(p => p.Table).First(tableSet => tableSet.table_id == tableID);
+            TableSetting tableSetting = _db.table_settings.Include(p => p.Table).Include(si => si.ServingItem).FirstOrDefault(tableSet => tableSet.table_id == tableID);
             return tableSetting.Table.TableSettings;
         }
 
@@ -35,6 +35,6 @@ namespace Restaurant_API.Data_Access_Layer
         }
 
         public async Task<TableSetting> GetAsync(int id) =>
-            await _db.table_settings.FirstOrDefaultAsync(tableSet => tableSet.id == id);
+            await _db.table_settings.Include(p => p.Table).Include(si => si.ServingItem).FirstOrDefaultAsync(tableSet => tableSet.id == id);
     }
 }

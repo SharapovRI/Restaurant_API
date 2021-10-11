@@ -23,14 +23,23 @@ namespace Restaurant_API.Business_Logic_Layer
 
         public Table AddTable(int user_id, string table_name)
         {
-            Table table = new Table { user_id = user_id, table_name = table_name };
-            return _tableRepository.Create(table);
+            User user = _tableRepository.GetRelatedUser(user_id);
+            if (user.Table == null)
+            {
+                Table table = new Table { user_id = user_id, table_name = table_name };
+                return _tableRepository.Create(table);
+            }
+            else throw new Exception("This user already contains a table");
         }
 
         public Table AddTable(User user, string table_name)
         {
-            Table table = new Table { user_id = user.id, table_name = table_name };
-            return _tableRepository.Create(table);
+            if (user.Table == null)
+            {
+                Table table = new Table { user_id = user.id, table_name = table_name };
+                return _tableRepository.Create(table);
+            }
+            else throw new Exception("This user already contains a table");
         }
 
         public Table UpdateTable(Table table)

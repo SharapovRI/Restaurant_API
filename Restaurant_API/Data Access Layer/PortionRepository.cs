@@ -25,7 +25,7 @@ namespace Restaurant_API.Data_Access_Layer
         }
         public new List<Portion> Get(int tableID)
         {
-            Portion portion = _db.portions.Include(p => p.Table).First(port => port.table_id == tableID);
+            Portion portion = _db.portions.Include(p => p.Table).Include(d => d.Dish).First(port => port.table_id == tableID);
             return portion.Table.Portions;
         }
 
@@ -35,6 +35,6 @@ namespace Restaurant_API.Data_Access_Layer
         }
 
         public async Task<Portion> GetAsync(int id) =>
-            await _db.portions.FirstOrDefaultAsync(portion => portion.id == id);
+            await _db.portions.Include(p => p.Table).Include(d => d.Dish).FirstOrDefaultAsync(portion => portion.id == id);
     }
 }

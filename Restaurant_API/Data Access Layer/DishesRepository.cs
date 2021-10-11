@@ -25,16 +25,16 @@ namespace Restaurant_API.Data_Access_Layer
         }
 
         public new List<Dish> Get() =>
-            _db.dishes.ToList();
+            _db.dishes.Include(port => port.Portions).ToList();
 
         public async Task<Dish> GetAsync(int id) =>
-            await _db.dishes.FirstOrDefaultAsync(dish => dish.id == id);
+            await _db.dishes.Include(port => port.Portions).FirstOrDefaultAsync(dish => dish.id == id);
 
         public Dish Get(string name) =>
-            _db.dishes.FirstOrDefault(dish => dish.name == name);
+            _db.dishes.Include(port => port.Portions).FirstOrDefault(dish => dish.name == name);
 
         public async Task<Dish> GetAsync(string name) =>
-            await _db.dishes.FirstOrDefaultAsync(dish => dish.name == name);
+            await _db.dishes.Include(port => port.Portions).FirstOrDefaultAsync(dish => dish.name == name);
                 
         public Dish Remove(string name)
         {

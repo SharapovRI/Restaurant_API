@@ -32,6 +32,6 @@ namespace Restaurant_API.Data_Access_Layer
             _db.users.ToList();
 
         public async Task<User> GetAsync(int id) =>
-            await _db.users.FirstOrDefaultAsync(user => user.id == id);        
+            await _db.users.Include(table => table.Table).FirstOrDefaultAsync(user => user.id == id);        
     }
 }

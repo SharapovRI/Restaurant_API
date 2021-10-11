@@ -25,16 +25,16 @@ namespace Restaurant_API.Data_Access_Layer
         }
 
         public new List<ServingItem> Get() =>
-            _db.serving_items.ToList();
+            _db.serving_items.Include(ts => ts.TableSettings).ToList();
 
         public async Task<ServingItem> GetAsync(int id) =>
-            await _db.serving_items.FirstOrDefaultAsync(servingItem => servingItem.id == id);
+            await _db.serving_items.Include(ts => ts.TableSettings).FirstOrDefaultAsync(servingItem => servingItem.id == id);
 
         public ServingItem Get(string name) =>
-            _db.serving_items.FirstOrDefault(servingItem => servingItem.name == name);
+            _db.serving_items.Include(ts => ts.TableSettings).FirstOrDefault(servingItem => servingItem.name == name);
 
         public async Task<ServingItem> GetAsync(string name) =>
-            await _db.serving_items.FirstOrDefaultAsync(servingItem => servingItem.name == name);
+            await _db.serving_items.Include(ts => ts.TableSettings).FirstOrDefaultAsync(servingItem => servingItem.name == name);
 
         public ServingItem Remove(string name)
         {

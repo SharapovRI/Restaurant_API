@@ -30,13 +30,23 @@ namespace Restaurant_API.Controllers
         [HttpPost("Create/!{tableID}!{dishID}!{weight}")]
         public void Create(int user_id, string table_name)
         {
-            _tableLogic.AddTable(user_id, table_name);
+            try
+            {
+                _tableLogic.AddTable(user_id, table_name);
+            }
+            catch(Exception ex)
+            { }
         }
 
         [HttpPost("Create")]
         public void Create(User user, string table_name)
         {
-            _tableLogic.AddTable(user, table_name);
+            try
+            {
+                _tableLogic.AddTable(user, table_name);
+            }
+            catch (Exception ex)
+            { }
         }
 
         [HttpPost("Update")]

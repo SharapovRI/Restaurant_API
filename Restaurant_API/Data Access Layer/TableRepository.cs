@@ -25,10 +25,15 @@ namespace Restaurant_API.Data_Access_Layer
         }
         public new Models.Table Get(int tableID)
         {
-            return _db.tables.Include(p => p.Portions).Include(p => p.TableSettings).Include(p => p.User).First(port => port.id == tableID);
+            return _db.tables.Include(p => p.Portions).Include(p => p.TableSettings).Include(p => p.User).FirstOrDefault(port => port.id == tableID);
         }
 
         public async Task<Models.Table> GetAsync(int id) =>
-            await _db.tables.FirstOrDefaultAsync(table => table.id == id);
+            await _db.tables.Include(p => p.Portions).Include(p => p.TableSettings).Include(p => p.User).FirstOrDefaultAsync(table => table.id == id);
+
+        public User GetRelatedUser(int userID)
+        {
+            return _db.users.Include(t => t.Table).FirstOrDefault(user => user.id == userID);
+        }
     }
 }
